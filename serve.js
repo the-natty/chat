@@ -55,6 +55,6 @@ io.on('connection', (socket) => {
 });
 
 // 服务地址
-http.listen(process.env.port || 3000, () => {
-  console.log(`listening on http://localhost:${process.env.port || 3000}`);
+http.listen(3000, () => {
+  console.log(`listening on http://localhost:${3000}`);
 });
