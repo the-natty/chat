@@ -35,7 +35,9 @@ app.use(function(err, req, res, next) {
 
 // 服务引用
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(http, {
+  path: '/ownpath'
+});
 
 // 服务Server
 io.on('connection', (socket) => {
