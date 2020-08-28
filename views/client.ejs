@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+    <!-- load the socket.io-client -->
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <input id="m" autocomplete="off" />
+    <button id="btn" onclick="sendMsg()">Send</button>
+    <ul id="ul">
+
+    </ul>
+
+    <script>
+      // 默认将尝试连接到提供当前页面的主机
+      var socket = io();
+      socket.on('chat msg', function(msg) {
+        console.log('receive msg from server: ', msg)
+      })
+
+      var input = document.getElementById('m');
+      function sendMsg() {
+        console.log(input.value)
+        socket.emit('chat msg', input.value)
+        input.value = ''
+        return false
+      }
+    </script>
+  </body>
+</html>
